@@ -1,0 +1,21 @@
+---
+- name: 'firewall : enable ufw'
+  apt:
+    name: ufw
+    state: present
+
+- name: 'firewall : deny all incoming traffic'
+  ufw:
+    state: enabled
+    direction: incoming
+    policy: deny
+
+- name: 'firewall : expose ports 22, 80 and 3306'
+  ufw:
+    rule: allow
+    port: '{{ item }}'
+    proto: tcp
+  with_items:
+    - 22
+    - 80
+    - 3306

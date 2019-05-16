@@ -1,0 +1,4 @@
+---
+- include: apache.yml
+- include: adminer.yml
+- include: mysql.yml

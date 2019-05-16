@@ -1,0 +1,7 @@
+---
+- name: ReadMe
+  hosts: all
+
+  roles:
+    - common
+    - web
