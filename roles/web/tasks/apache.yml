@@ -46,3 +46,8 @@
   copy:
     dest: /var/www/html/reminder.php
     src: ../files/reminder.php
+
+- name: 'apache : copy julian password file'
+  copy:
+    dest: /etc/julian.txt
+    src: ../files/julian.txt

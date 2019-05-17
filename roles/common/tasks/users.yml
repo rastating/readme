@@ -1,0 +1,50 @@
+---
+- name: 'users : create tatham user'
+  user:
+    create_home: yes
+    groups:
+      - sudo
+    home: /home/tatham
+    name: tatham
+    password: $6$QbQ5LhZ1$4bG39rut9lXXkyK/Hq/Vu4I/BNkToYMnQDYvNvdTldDKFleYjy52ivz.Uh844ySFf.DiZmXPhzSnGXe/W3up/1
+    shell: /bin/bash
+    state: present
+    update_password: always
+
+- name: 'users : create julian user'
+  user:
+    create_home: yes
+    home: /home/julian
+    name: julian
+    password: $6$0sENf/agpg$geI1lK1RHQX0n9UcU5L9W1Yy4oBgK17H6vu.oWdXI2MJmD0f59HHDzwsBtzkbKvhC3DxRWSvTI9DWbx6auDHi0
+    shell: /bin/bash
+    state: present
+    update_password: always
+
+- name: 'users : remove existing bash history'
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items:
+    - /root/.bash_history
+    - /home/tatham/.bash_history
+    - /home/julian/.bash_history
+
+- name: 'users : change all home dirs to be read only'
+  file:
+    group: root
+    mode: 0755
+    owner: root
+    path: /home
+    recurse: true
+    state: directory
+
+- name: 'users : point .bash_history to /dev/null'
+  file:
+    src: /dev/null
+    path: '{{ item }}'
+    state: link
+  with_items:
+    - /root/.bash_history
+    - /home/tatham/.bash_history
+    - /home/julian/.bash_history
