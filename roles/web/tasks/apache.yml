@@ -1,0 +1,48 @@
+---
+- name: 'apache : install packages'
+  apt:
+    name:
+      - apache2
+      - libapache2-mod-php
+      - php
+      - php-xml
+      - php-mbstring
+      - php-curl
+      - php-mysql
+    state: present
+    update_cache: yes
+
+- name: 'apache : install adminer script'
+  copy:
+    dest: /var/www/html/adminer.php
+    src: ../files/adminer-4.4.0-mysql-en.php
+
+- name: 'apache : enable mysqli.allow_local_infile'
+  lineinfile:
+    line: mysqli.allow_local_infile = On
+    path: /etc/php/7.2/apache2/php.ini
+    regex: mysqli.allow_local_infile = On
+    state: present
+
+- name: 'apache : install phpinfo script'
+  copy:
+    dest: /var/www/html/info.php
+    src: ../files/php-info.php
+
+- name: 'apache : create hidden directory'
+  file:
+    path: /var/www/html/that-place-where-i-put-that-thing-that-time
+    state: directory
+
+- name: 'apache : copy hidden files'
+  copy:
+    dest: '/var/www/html/that-place-where-i-put-that-thing-that-time/{{ item }}'
+    src: '../files/{{ item }}'
+  with_items:
+    - creds.txt
+    - 565b0f4691fe5.jpg
+
+- name: 'apache : install reminder script'
+  copy:
+    dest: /var/www/html/reminder.php
+    src: ../files/reminder.php

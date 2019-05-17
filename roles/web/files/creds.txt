@@ -1,0 +1,4 @@
+total 8.0K
+drwxr-xr-x 2 root root 4.0K May 17 18:43 .
+drwxr-xr-x 3 root root 4.0K May 17 18:43 ..
+lrwxrwxrwx 1 root root   15 May 17 18:42 creds.txt -> /etc/julian.txt
