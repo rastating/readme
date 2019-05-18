@@ -1,0 +1,5 @@
+*.out
+.gdb_history
+peda-session*
+*.o
+playbook.retry

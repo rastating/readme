@@ -10,6 +10,9 @@
         <p>
             Also, can you fix this search box? Sometimes it chucks errors depending on what I enter...
         </p>
+        <p>
+            I&apos;d do it myself, but I&apos;ve been busy trying to create some code to enable us to securely store our passwords, seeing as you keep forgetting yours... The encoder seems completely borked though.
+        </p>
 
         <?php
             if ($_POST['username']) {

@@ -5,3 +5,4 @@
   roles:
     - common
     - web
+    - root_challenge

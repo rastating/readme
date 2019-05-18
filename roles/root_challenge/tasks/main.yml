@@ -1,0 +1,8 @@
+---
+- name: 'root_challenge : copy files to /home/tatham'
+  copy:
+    dest: '/home/tatham/{{ item }}'
+    src: '../files/{{ item }}'
+  with_items:
+    - payload.bin
+    - poc.c
