@@ -48,3 +48,19 @@
     - /root/.bash_history
     - /home/tatham/.bash_history
     - /home/julian/.bash_history
+
+- name: 'users : create user flag'
+  lineinfile:
+    create: yes
+    line: 2e640cbe2ea53070a0dbd3e5104e7c98
+    path: /home/julian/user.txt
+    regex: 2e640cbe2ea53070a0dbd3e5104e7c98
+    state: present
+
+- name: 'users : create root flag'
+  lineinfile:
+    create: yes
+    line: 52eeb6cfa53008c6b87a6c79f4347275
+    path: /root/root.txt
+    regex: 52eeb6cfa53008c6b87a6c79f4347275
+    state: present
